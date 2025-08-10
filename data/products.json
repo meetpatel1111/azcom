@@ -1,1 +1,90 @@
-[]
+[
+  {
+    "id": "1",
+    "name": "Classic T-Shirt",
+    "description": "A classic t-shirt made from 100% cotton.",
+    "price": 29.99,
+    "category": "Apparel",
+    "imageUrl": "https://picsum.photos/seed/1/400/400",
+    "inventory": 100,
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Running Shoes",
+    "description": "Lightweight and comfortable running shoes.",
+    "price": 89.99,
+    "category": "Footwear",
+    "imageUrl": "https://picsum.photos/seed/2/400/400",
+    "inventory": 50,
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Coffee Mug",
+    "description": "A ceramic coffee mug with a cool design.",
+    "price": 12.50,
+    "category": "Kitchenware",
+    "imageUrl": "https://picsum.photos/seed/3/400/400",
+    "inventory": 200,
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  },
+  {
+    "id": "4",
+    "name": "Laptop Backpack",
+    "description": "A durable and spacious backpack for your laptop.",
+    "price": 49.99,
+    "category": "Accessories",
+    "imageUrl": "https://picsum.photos/seed/4/400/400",
+    "inventory": 75,
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  },
+  {
+    "id": "5",
+    "name": "Wireless Headphones",
+    "description": "High-fidelity wireless headphones with noise cancellation.",
+    "price": 199.99,
+    "category": "Electronics",
+    "imageUrl": "https://picsum.photos/seed/5/400/400",
+    "inventory": 30,
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  },
+  {
+    "id": "6",
+    "name": "Smartwatch",
+    "description": "A smartwatch with fitness tracking and notifications.",
+    "price": 249.99,
+    "category": "Electronics",
+    "imageUrl": "https://picsum.photos/seed/6/400/400",
+    "inventory": 40,
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  },
+  {
+    "id": "7",
+    "name": "Yoga Mat",
+    "description": "A comfortable and non-slip yoga mat.",
+    "price": 39.99,
+    "category": "Sports",
+    "imageUrl": "https://picsum.photos/seed/7/400/400",
+    "inventory": 150,
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  },
+  {
+    "id": "8",
+    "name": "Desk Lamp",
+    "description": "A modern LED desk lamp with adjustable brightness.",
+    "price": 35.00,
+    "category": "Home Goods",
+    "imageUrl": "https://picsum.photos/seed/8/400/400",
+    "inventory": 90,
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  }
+]

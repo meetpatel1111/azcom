@@ -106,8 +106,7 @@ const Products: React.FC = () => {
           />
           
           <SortOptions
-            sortBy={filters.sortBy || 'name'}
-            sortOrder={filters.sortOrder || 'asc'}
+            currentSort={{ sortBy: filters.sortBy, sortOrder: filters.sortOrder }}
             onSortChange={handleSortChange}
           />
         </div>
