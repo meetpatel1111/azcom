@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "Online Shopping Platform",
+    "version": "1.0.0"
+  },
+  "categories": [
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Home & Garden",
+    "Sports",
+    "Toys"
+  ],
+  "orderStatuses": [
+    "pending",
+    "processing", 
+    "shipped",
+    "delivered",
+    "cancelled"
+  ]
+}
