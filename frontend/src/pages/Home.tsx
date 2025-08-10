@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../types';
-import * as productService from '../services/productService';
+import { mockProductService } from '../services/mockProductService';
 import ProductList from '../components/Product/ProductList';
 
 const Home: React.FC = () => {
@@ -11,7 +11,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
-        const response = await productService.getProducts({ limit: 8 });
+        const response = await mockProductService.getProducts({ limit: 8 });
         setFeaturedProducts(response.data || []);
       } catch (error) {
         console.error('Failed to load featured products:', error);

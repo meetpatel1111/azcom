@@ -33,7 +33,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
     if (!isAuthenticated) {
       // Could show a login modal or redirect to login
-      alert('Please log in to add items to your cart');
+      // Show a more user-friendly notification
+      const loginConfirm = window.confirm('Please log in to add items to your cart. Would you like to go to the login page?');
+      if (loginConfirm) {
+        window.location.href = '/login';
+      }
       return;
     }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { getOrderById, getOrderTracking, cancelOrder } from '../services/orderService';
+import { mockOrderService } from '../services/mockOrderService';
 import { Order, OrderTracking } from '../types';
 import OrderStatusBadge from '../components/Orders/OrderStatusBadge';
 import OrderTrackingTimeline from '../components/Orders/OrderTrackingTimeline';
@@ -35,7 +35,7 @@ const OrderDetail: React.FC = () => {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await getOrderById(id);
+        const response = await mockOrderService.getOrderById(id);
         setOrder(response.order);
       } catch (err: any) {
         setError(err.message || 'Failed to load order details');
@@ -54,7 +54,7 @@ const OrderDetail: React.FC = () => {
 
       try {
         setIsLoadingTracking(true);
-        const response = await getOrderTracking(id);
+        const response = await mockOrderService.getOrderTracking(id);
         setTracking(response.tracking);
       } catch (err: any) {
         // Tracking might not be available for all orders, so don't show error
@@ -75,7 +75,7 @@ const OrderDetail: React.FC = () => {
 
     try {
       setIsCancelling(true);
-      const response = await cancelOrder(id);
+      const response = await mockOrderService.cancelOrder(id);
       setOrder(response.order);
       setTracking(null); // Clear tracking as it may no longer be relevant
     } catch (err: any) {

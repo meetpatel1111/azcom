@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 import { Cart, CartItem, CartSummary, Product } from '../types';
 import { useAuth } from './AuthContext';
-import * as cartService from '../services/cartService';
+import { mockCartService } from '../services/mockCartService';
 
 // Cart State
 interface CartState {
@@ -127,7 +127,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     try {
       dispatch({ type: 'CART_LOADING' });
-      const cartData = await cartService.getCart();
+      const cartData = await mockCartService.getCart();
       
       dispatch({
         type: 'CART_SUCCESS',
@@ -157,7 +157,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     try {
       dispatch({ type: 'CART_LOADING' });
-      const response = await cartService.addToCart(productId, quantity);
+      const response = await mockCartService.addToCart(productId, quantity);
       
       dispatch({
         type: 'CART_SUCCESS',
@@ -186,7 +186,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     try {
       dispatch({ type: 'CART_LOADING' });
-      const response = await cartService.updateCartItem(productId, quantity);
+      const response = await mockCartService.updateCartItem(productId, quantity);
       
       dispatch({
         type: 'CART_SUCCESS',
@@ -215,7 +215,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     try {
       dispatch({ type: 'CART_LOADING' });
-      const response = await cartService.removeFromCart(productId);
+      const response = await mockCartService.removeFromCart(productId);
       
       dispatch({
         type: 'CART_SUCCESS',
@@ -244,7 +244,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     try {
       dispatch({ type: 'CART_LOADING' });
-      await cartService.clearCart();
+      await mockCartService.clearCart();
       dispatch({ type: 'CLEAR_CART' });
     } catch (error: any) {
       dispatch({
@@ -260,7 +260,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     try {
       dispatch({ type: 'CART_LOADING' });
-      const response = await cartService.syncCart();
+      const response = await mockCartService.syncCart();
       
       dispatch({
         type: 'CART_SUCCESS',

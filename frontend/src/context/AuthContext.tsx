@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 import { User, AuthTokens, LoginForm, RegisterForm } from '../types';
 import { TokenManager } from '../services/api';
-import * as authService from '../services/authService';
+import { mockAuthService } from '../services/mockAuthService';
 
 // Auth State
 interface AuthState {
@@ -112,7 +112,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (TokenManager.hasValidToken()) {
       try {
         dispatch({ type: 'AUTH_START' });
-        const user = await authService.getCurrentUser();
+        const user = await mockAuthService.getCurrentUser();
         dispatch({
           type: 'AUTH_SUCCESS',
           payload: {
@@ -136,7 +136,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (credentials: LoginForm) => {
     try {
       dispatch({ type: 'AUTH_START' });
-      const response = await authService.login(credentials);
+      const response = await mockAuthService.login(credentials);
       
       TokenManager.setTokens(response.tokens);
       dispatch({
@@ -158,7 +158,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const register = async (userData: RegisterForm) => {
     try {
       dispatch({ type: 'AUTH_START' });
-      const response = await authService.register(userData);
+      const response = await mockAuthService.register(userData);
       
       TokenManager.setTokens(response.tokens);
       dispatch({
@@ -179,7 +179,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = async () => {
     try {
-      await authService.logout();
+      await mockAuthService.logout();
     } catch (error) {
       // Continue with logout even if API call fails
       console.error('Logout API call failed:', error);
@@ -200,7 +200,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const updateProfile = async (profileData: Partial<User>) => {
     try {
       dispatch({ type: 'AUTH_START' });
-      const updatedUser = await authService.updateProfile(profileData);
+      const updatedUser = await mockAuthService.updateProfile(profileData);
       dispatch({ type: 'UPDATE_USER', payload: updatedUser });
     } catch (error: any) {
       dispatch({

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Product } from '../../types';
-import { productService } from '../../services/productService';
+import { mockProductService } from '../../services/mockProductService';
 import { useAuth } from '../../context/AuthContext';
 import ProductForm from './ProductForm';
 import InventoryManager from './InventoryManager';
@@ -56,7 +56,7 @@ const AdminPanel: React.FC = () => {
   const loadProducts = async () => {
     try {
       setState(prev => ({ ...prev, isLoading: true, error: null }));
-      const response = await productService.getProducts({ limit: 100 });
+      const response = await mockProductService.getProducts({ limit: 100 });
       setState(prev => ({ 
         ...prev, 
         products: response.data || [], 
@@ -73,7 +73,7 @@ const AdminPanel: React.FC = () => {
 
   const loadLowInventoryProducts = async () => {
     try {
-      const lowInventory = await productService.getLowInventoryProducts(10);
+      const lowInventory = await mockProductService.getLowInventoryProducts(10);
       setState(prev => ({ ...prev, lowInventoryProducts: lowInventory }));
     } catch (error) {
       console.error('Failed to load low inventory products:', error);
@@ -83,7 +83,7 @@ const AdminPanel: React.FC = () => {
   const handleCreateProduct = async (productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>) => {
     try {
       setState(prev => ({ ...prev, isLoading: true, error: null }));
-      await productService.createProduct(productData);
+      await mockProductService.createProduct(productData);
       setState(prev => ({ 
         ...prev, 
         isLoading: false, 
@@ -106,7 +106,7 @@ const AdminPanel: React.FC = () => {
 
     try {
       setState(prev => ({ ...prev, isLoading: true, error: null }));
-      await productService.updateProduct(state.selectedProduct.id, productData);
+      await mockProductService.updateProduct(state.selectedProduct.id, productData);
       setState(prev => ({ 
         ...prev, 
         isLoading: false, 
@@ -132,7 +132,7 @@ const AdminPanel: React.FC = () => {
 
     try {
       setState(prev => ({ ...prev, isLoading: true, error: null }));
-      await productService.deleteProduct(productId);
+      await mockProductService.deleteProduct(productId);
       setState(prev => ({ 
         ...prev, 
         isLoading: false, 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { getOrders } from '../services/orderService';
+import { mockOrderService } from '../services/mockOrderService';
 import { Order } from '../types';
 import OrderList from '../components/Orders/OrderList';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
@@ -30,7 +30,7 @@ const Orders: React.FC = () => {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await getOrders();
+        const response = await mockOrderService.getOrders();
         setOrders(response.orders);
       } catch (err: any) {
         setError(err.message || 'Failed to load orders');
@@ -61,7 +61,7 @@ const Orders: React.FC = () => {
     const fetchOrders = async () => {
       try {
         setIsLoading(true);
-        const response = await getOrders();
+        const response = await mockOrderService.getOrders();
         setOrders(response.orders);
       } catch (err: any) {
         setError(err.message || 'Failed to load orders');

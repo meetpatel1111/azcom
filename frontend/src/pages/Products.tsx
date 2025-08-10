@@ -4,7 +4,7 @@ import SearchBar from '../components/Product/SearchBar';
 import ProductFilters from '../components/Product/ProductFilters';
 import SortOptions from '../components/Product/SortOptions';
 import { Product, ProductFilters as ProductFiltersType } from '../types';
-import * as productService from '../services/productService';
+import { mockProductService } from '../services/mockProductService';
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -27,7 +27,7 @@ const Products: React.FC = () => {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await productService.getProducts(filters);
+        const response = await mockProductService.getProducts(filters);
         setProducts(response.data);
         setFilteredProducts(response.data);
       } catch (err: any) {

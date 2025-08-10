@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import { createOrder } from '../services/orderService';
+import { mockOrderService } from '../services/mockOrderService';
 import { CheckoutForm, Address } from '../types';
 import ShippingForm from '../components/Checkout/ShippingForm';
 import PaymentForm from '../components/Checkout/PaymentForm';
@@ -61,7 +61,7 @@ const Checkout: React.FC = () => {
         paymentInfo,
       };
 
-      const response = await createOrder(finalCheckoutData);
+      const response = await mockOrderService.createOrder(finalCheckoutData);
       setOrderId(response.order.id);
       setCurrentStep('confirmation');
       

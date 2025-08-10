@@ -35,7 +35,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
     }
 
     if (!isAuthenticated) {
-      alert('Please log in to add items to your cart');
+      const loginConfirm = window.confirm('Please log in to add items to your cart. Would you like to go to the login page?');
+      if (loginConfirm) {
+        window.location.href = '/login';
+      }
       return;
     }
 

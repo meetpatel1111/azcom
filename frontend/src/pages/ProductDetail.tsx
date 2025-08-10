@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ProductDetailComponent from '../components/Product/ProductDetail';
 import { Product } from '../types';
-import * as productService from '../services/productService';
+import { mockProductService } from '../services/mockProductService';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +22,7 @@ const ProductDetail: React.FC = () => {
       try {
         setIsLoading(true);
         setError(null);
-        const productData = await productService.getProduct(id);
+        const productData = await mockProductService.getProduct(id);
         setProduct(productData);
       } catch (err: any) {
         setError(err.message || 'Failed to load product');

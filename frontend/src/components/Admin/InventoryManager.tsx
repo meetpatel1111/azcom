@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Product } from '../../types';
-import { productService } from '../../services/productService';
+import { mockProductService } from '../../services/mockProductService';
 import { FormInput, LoadingSpinner, ErrorMessage, SuccessMessage } from '../UI';
 
 interface InventoryManagerProps {
@@ -87,7 +87,7 @@ const InventoryManager: React.FC<InventoryManagerProps> = ({ products, onProduct
       setIsLoading(true);
       setError(null);
       
-      await productService.updateProduct(productId, { inventory: newInventory });
+      await mockProductService.updateProduct(productId, { inventory: newInventory });
       
       setPendingUpdates(prev => {
         const updated = { ...prev };
@@ -112,7 +112,7 @@ const InventoryManager: React.FC<InventoryManagerProps> = ({ products, onProduct
       setError(null);
 
       const updates = Object.entries(pendingUpdates).map(([productId, inventory]) =>
-        productService.updateProduct(productId, { inventory })
+        mockProductService.updateProduct(productId, { inventory })
       );
 
       await Promise.all(updates);
